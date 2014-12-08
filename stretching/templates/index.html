@@ -1,0 +1,29 @@
+<title>JeffCa Stretching</title>
+<meta name="description" content="stretch">
+
+
+{% extends 'base.html' %}
+
+{% block head %}
+
+ <script type="text/javascript">
+ 
+  </script>
+{% endblock %}
+
+{% block body %}
+
+<div ng-app="DocWriter" ng-controller="MyController">
+
+ <div class="row">
+      <h1 class="text-center"><a href="/">JeffCa Stretching</a></h1>
+  </div>
+</div>
+  {% raw %}
+  <div data-ng-view="">
+
+
+  </div>
+  {% endraw %}
+</div>
+{% endblock %}

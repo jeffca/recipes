@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel='stylesheet' type='text/css' href='/static/bootstrap/css/bootstrap.css'>
+	<script src="/static/angular.min.js"></script>
+	<script src="/static/angular-resource.min.js"></script>
+	<script src="/static/angularui.min.js"></script>
+ 	<script type="text/javascript" src="/static/jquery-2.1.0.min.js"></script>
+	<script src="/static/bootstrap/js/bootstrap.js" type="text/javascript"></script>
+  <script src="http://underscorejs.org/underscore-min.js" type="text/javascript"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 	
+
+  <style>
+    .poses-button {
+      margin-right: 1.7%;
+      margin-bottom: 1.5%;
+      padding: 1.5%;
+    }
+
+    .poses-button:hover{
+      background-color: #333;
+      text-decoration: underline;
+      box-shadow: 2.4px 2.4px 1.2px #666;
+      color:#fff;
+    }
+
+  </style>
+
+<script type="text/javascript">
+    var underscore = angular.module('underscore', []);
+    underscore.factory('_', function() {
+      return window._; // assumes underscore has already been loaded on the page
+    });
+
+
+   var DocWriter = angular.module('DocWriter', ['ngResource', 'underscore']);
+
+    DocWriter.factory("Classification", function($resource) {
+        return $resource("/api/Classification/:Id", { Id: "@Id"}, {
+          "update": {method:"PUT"},
+          "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
+        });
+    });
+
+    DocWriter.factory("Muscle", function($resource) {
+        return $resource("/api/Muscle/:Id", { Id: "@Id"}, {
+          "update": {method:"PUT"},
+          "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
+        });
+    });
+
+    DocWriter.factory("Muscle_Pose", function($resource) {
+        return $resource("/api/Muscle_Pose/:Id", { Id: "@Id"}, {
+          "update": {method:"PUT"},
+          "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
+        });
+    });
+
+    DocWriter.factory("Pose", function($resource) {
+        return $resource("/api/Pose/:Id", { Id: "@Id"}, {
+          "update": {method:"PUT"},
+          "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
+        });
+    });
+
+
+    DocWriter.config(function($routeProvider) {
+       $routeProvider
+        .when('/', { controller: 'MyController', templateUrl: '/static/partials/home.html' })
+        .when('/pose', { controller: 'PoseController', templateUrl: '/static/partials/pose.html' })
+        .when('/muscle', { controller: 'MuscleController', templateUrl: '/static/partials/muscle.html' })
+        .otherwise({ redirectTo: '/'});
+    });
+
+    DocWriter.controller('MyController', function($scope, $rootScope, $http, $location, Classification, Muscle, Pose, _) {
+
+      // var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];      
+      // console.log(_.pluck(stooges, 'name')); 
+
+      var classifications = Classification.query(function() {
+        $http.get('/api/Classification').success(function(data) {
+          $scope.classifications = data.objects;
+        });
+      });
+
+      $scope.check = function (searchText) {
+          console.log(searchText);
+      };
+      // var muscles = Muscle.query(function() {
+      //   $http.get('/api/Muscle').success(function(data) {
+      //     $scope.muscles = data.objects;
+      //   });
+      // });
+
+      // var poses = Pose.query(function() {
+      //   $http.get('/api/Pose').success(function(data) {
+      //     $scope.poses = data.objects;
+      //   });
+      // });
+
+      $scope.myMuscles = [];
+
+      $scope.filterPose = function(id) {
+        $rootScope.pose_id = id;
+        // $http.get('/api/Pose?q={"filters":[{"name":"id","op":"eq","val":' + id + '}]}').success(function(data) {
+        //   $rootScope.pose_id = data.objects[0].id;
+        // });
+        $location.path("/pose");
+        //see PoseController now
+      };        
+
+    });
+
+    DocWriter.controller('PoseController', function($scope, $rootScope, $http, $location, Muscle, Pose, _) {                          
+      var pose = Pose.query(function() {
+        $http.get('/api/Pose/'+$rootScope.pose_id).success(function(data) {
+          $scope.pose = data;
+          var muscle_ids = _.pluck(data["Muscle_Pose"], 'muscle_id');
+          var muscles_temp = [];
+          for (var muscle_id in muscle_ids) {
+            $http.get('/api/Muscle/' + muscle_ids[muscle_id]).success(function(data) {            
+              muscles_temp.push(data);
+            });
+          }
+          $scope.muscles = muscles_temp;
+        });
+      });
+
+      $scope.goToMuscle = function(muscle_id) {
+        $http.get('/api/Muscle/'+muscle_id).success(function(data) {
+          $rootScope.muscle_id = data["id"];
+          $rootScope.muscle = data["name"];
+          $location.path("/muscle");
+        });      
+      };
+
+    });
+
+    DocWriter.controller('MuscleController', function($scope, $rootScope, $http, $location, Muscle, Pose, Muscle_Pose, _) {
+      var poses = Muscle_Pose.query(function() {
+        $http.get('/api/Muscle_Pose').success(function(data) {
+          console.log(data.objects);
+          $scope.poses = _.where(data.objects, {muscle_id:$rootScope.muscle_id});
+          console.log($scope.poses);
+          $scope.pose_names = _.pluck($scope.poses, "pose");
+          console.log($scope.pose_names);
+          console.log($scope.pose_names);          
+        });
+      });
+
+      $scope.filterPose = function(id) {
+        $rootScope.pose_id = id;
+        $location.path("/pose");
+      };        
+    });
+
+
+</script>
+
+</head>
+
+<body>
+<div class="container" data-role="page" itemscope itemtype="http://schema.org/GovernmentOrganization">
+
+<div ng-app="DocWriter" class="col-md-12">
+
+{% block body %}
+
+
+{% endblock %}
+
+</div>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+
+<style>
+
+  ol li {
+    clear: left;
+    margin-top: 3%;
+  }
+
+  #leftHeader {
+  	border-right: 1px solid black;
+  }
+
+  .header {
+  	border-bottom: 1px solid black;
+  }
+
+  .center {
+  	text-align: center;
+  }
+
+  #q {
+  	font-size: 11pt;
+  }
+
+</style>
+
+
+<div class="col-md-12">
+  <button ng-repeat="category in categories" class="btn btn-primary btn-xlarge" ng-click="filterCategory(category.id)">{{category.Name}}</button>
+</div>
+
+
+<div class="col-md-6 header" id="leftHeader">
+
+	<h2>STATE OF<input type="text" name="state"></input></h2>
+	<h2>COUNTY OF<input type="text" name="county"></input></h2>
+	<h2><input type="text" name="plantiff"></input></h2>
+	<p class="pull-right">Plantiff,</p>
+	<p>vs.</p>
+	<h2><input type="text" name="defendant"></input></h2>
+	<p class="pull-right">Defendant.</p>	
+</div>
+
+<div class="col-md-6 header">
+	<h2>IN THE<input type="text" name="court_type"></input>COURT
+	<h2><input type="text" name="judicial_court"></input>JUDICIAL CIRCUIT</h2>
+	<p class="center">Case No:<input type="text" name="case_number"></input></p>
+	<p class="center">FIRST SET OF INTERROGATORIES TO <input type="text" name="interrogation_to"></input></p>
+</div>
+
+<div class="col-md-12">
+<p>Pursuant to Rules 26 and 33(b) of the South Carolina Rules of Civil Procedure, the undersigned attorney hereby requests that you serve upon said counsel within thirty (30) days, answers to the following Interrogatories: </p>
+<!--    <tr ng-repeat="question in questionCartReadable">
+      <td id="q"><small>{{question}}</small>  <button class="btn btn-xs btn-warning pull-right" ng-click="removeQuestion(question.id)">Remove</button></td>
+    </tr>
+ -->
+  <ol>
+    <li ng-repeat="(id, question) in questionCart">{{question}}<button class="btn btn-xs btn-danger pull-right" ng-click="removeQuestion(id)">Remove</button></li>
+  </ol>
+  <table class="table">
+    <tr>
+      <td>Count:</td><td>{{questionCount}}</td>
+    </tr>
+  </table>
+</div>
+
+<button ng-click="sendDocument()" class="btn btn-success">&rarr; Email Document</button>

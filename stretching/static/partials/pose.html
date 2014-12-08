@@ -1,0 +1,32 @@
+<div class="col-md-12">
+
+<!--   <form role="form" class="form">
+    <label ng-repeat="muscle in muscles">
+    <input type="checkbox" ng-model="myMuscles" value="{{muscle.id}}">{{muscle.name}}</label>
+  </form>
+ -->
+<hr>
+
+    <div class="row">
+<!--       <div class="col-lg-6 col-md-offset-4"> -->
+    <h2 class="text-center">{{pose["name"]}}</h2>
+    <div class="col-md-4">
+      <!-- <h3 class="text-center">Muscles Used</h3> -->
+      <hr/>
+      <ul>
+        <li><button ng-repeat="muscle in muscles" ng-click="goToMuscle(muscle['id'])">{{muscle["name"]}}</button></li>
+      </ul>
+    </div>
+
+    <div class="col-md-12">
+      <img src="{{pose['img1url']}}" alt="{{pose['name']}}" class="img-responsive img-rounded">
+      <p class="text-center lead">{{pose["description"]}}</p>
+    </div>
+    <div class="col-md-8">
+      <img src="{{pose['img2url']}}" alt="{{pose['name']}}" class="img-responsive img-rounded">
+    </div>
+<!--   </div> -->
+  </div>
+
+
+</div>

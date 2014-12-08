@@ -1,0 +1,35 @@
+<script>
+  $(document).ready(function() {
+
+    $("button").on("click"), function(event) {
+      event.preventDefault();
+      alert('click');
+    });
+
+  });
+</script>
+
+<div class="col-md-12">
+
+<!--   <form role="form" class="form">
+    <label ng-repeat="muscle in muscles">
+    <input type="checkbox" ng-model="myMuscles" value="{{muscle.id}}">{{muscle.name}}</label>
+  </form>
+ -->
+      <div class='col-md-3 col-md-offset-1'>
+        <input type="text" ng-model="searchText" class="form-control" />
+      </div>
+
+      <div class="col-md-7 col-md-offset-5">
+      </div>
+
+  <div ng-repeat="c in classifications" class="col-md-4"><p class="lead">{{c.name}}</p>
+  <button ng-repeat="pose in c.Pose | filter:searchText" class="btn btn-default poses-button" ng-click="filterPose(pose.id)">{{pose.name}}</button>
+  <hr />
+
+  </div>
+<!-- <hr>
+
+  <button ng-repeat="muscle in muscles" class="btn btn-primary btn-xlarge" ng-click="filterCategory(muscle.id)">{{muscle.name}}</button>
+ -->
+</div>
