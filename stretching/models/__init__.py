@@ -3,6 +3,11 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.associationproxy import association_proxy
 from stretching.database import Base
 
+class Classification(Base):
+	__tablename__ = 'Classification'
+	id = Column(Integer, primary_key=True)
+	name = Column(String(50))
+
 class Muscle(Base):
 	__tablename__ = 'Muscle'
 	id = Column(Integer, primary_key=True)
@@ -28,7 +33,3 @@ class Pose(Base):
 
 # class Pose_Classification
 
-class Classification(Base):
-	__tablename__ = 'Classification'
-	id = Column(Integer, primary_key=True)
-	name = Column(String(50))
