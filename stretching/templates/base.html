@@ -34,30 +34,30 @@
     });
 
 
-   var DocWriter = angular.module('DocWriter', ['ngResource', 'underscore']);
+   var JeffCaStretching = angular.module('JeffCaStretching', ['ngResource', 'underscore']);
 
-    DocWriter.factory("Classification", function($resource) {
+    JeffCaStretching.factory("Classification", function($resource) {
         return $resource("/api/Classification/:Id", { Id: "@Id"}, {
           "update": {method:"PUT"},
           "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
         });
     });
 
-    DocWriter.factory("Muscle", function($resource) {
+    JeffCaStretching.factory("Muscle", function($resource) {
         return $resource("/api/Muscle/:Id", { Id: "@Id"}, {
           "update": {method:"PUT"},
           "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
         });
     });
 
-    DocWriter.factory("Muscle_Pose", function($resource) {
+    JeffCaStretching.factory("Muscle_Pose", function($resource) {
         return $resource("/api/Muscle_Pose/:Id", { Id: "@Id"}, {
           "update": {method:"PUT"},
           "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
         });
     });
 
-    DocWriter.factory("Pose", function($resource) {
+    JeffCaStretching.factory("Pose", function($resource) {
         return $resource("/api/Pose/:Id", { Id: "@Id"}, {
           "update": {method:"PUT"},
           "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
@@ -65,7 +65,7 @@
     });
 
 
-    DocWriter.config(function($routeProvider) {
+    JeffCaStretching.config(function($routeProvider) {
        $routeProvider
         .when('/', { controller: 'MyController', templateUrl: '/static/partials/home.html' })
         .when('/pose', { controller: 'PoseController', templateUrl: '/static/partials/pose.html' })
@@ -73,10 +73,7 @@
         .otherwise({ redirectTo: '/'});
     });
 
-    DocWriter.controller('MyController', function($scope, $rootScope, $http, $location, Classification, Muscle, Pose, _) {
-
-      // var stooges = [{name: 'moe', age: 40}, {name: 'larry', age: 50}, {name: 'curly', age: 60}];      
-      // console.log(_.pluck(stooges, 'name')); 
+    JeffCaStretching.controller('MyController', function($scope, $rootScope, $http, $location, Classification, Muscle, Pose, _) {
 
       var classifications = Classification.query(function() {
         $http.get('/api/Classification').success(function(data) {
@@ -84,35 +81,17 @@
         });
       });
 
-      $scope.check = function (searchText) {
-          console.log(searchText);
-      };
-      // var muscles = Muscle.query(function() {
-      //   $http.get('/api/Muscle').success(function(data) {
-      //     $scope.muscles = data.objects;
-      //   });
-      // });
-
-      // var poses = Pose.query(function() {
-      //   $http.get('/api/Pose').success(function(data) {
-      //     $scope.poses = data.objects;
-      //   });
-      // });
 
       $scope.myMuscles = [];
 
       $scope.filterPose = function(id) {
         $rootScope.pose_id = id;
-        // $http.get('/api/Pose?q={"filters":[{"name":"id","op":"eq","val":' + id + '}]}').success(function(data) {
-        //   $rootScope.pose_id = data.objects[0].id;
-        // });
         $location.path("/pose");
-        //see PoseController now
       };        
 
     });
 
-    DocWriter.controller('PoseController', function($scope, $rootScope, $http, $location, Muscle, Pose, _) {                          
+    JeffCaStretching.controller('PoseController', function($scope, $rootScope, $http, $location, Muscle, Pose, _) {                          
       var pose = Pose.query(function() {
         $http.get('/api/Pose/'+$rootScope.pose_id).success(function(data) {
           $scope.pose = data;
@@ -137,15 +116,11 @@
 
     });
 
-    DocWriter.controller('MuscleController', function($scope, $rootScope, $http, $location, Muscle, Pose, Muscle_Pose, _) {
+    JeffCaStretching.controller('MuscleController', function($scope, $rootScope, $http, $location, Muscle, Pose, Muscle_Pose, _) {
       var poses = Muscle_Pose.query(function() {
         $http.get('/api/Muscle_Pose').success(function(data) {
-          console.log(data.objects);
           $scope.poses = _.where(data.objects, {muscle_id:$rootScope.muscle_id});
-          console.log($scope.poses);
           $scope.pose_names = _.pluck($scope.poses, "pose");
-          console.log($scope.pose_names);
-          console.log($scope.pose_names);          
         });
       });
 
@@ -163,7 +138,7 @@
 <body>
 <div class="container" data-role="page" itemscope itemtype="http://schema.org/GovernmentOrganization">
 
-<div ng-app="DocWriter" class="col-md-12">
+<div ng-app="JeffCaStretching" class="col-md-12">
 
 {% block body %}
 
