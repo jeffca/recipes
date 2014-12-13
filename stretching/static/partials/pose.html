@@ -5,25 +5,27 @@
     <input type="checkbox" ng-model="myMuscles" value="{{muscle.id}}">{{muscle.name}}</label>
   </form>
  -->
-<hr>
+<!-- <hr> -->
 
     <div class="row">
 <!--       <div class="col-lg-6 col-md-offset-4"> -->
-    <h2 class="text-center">{{pose["name"]}}</h2>
+    <h2 class="text-center pose_title">{{pose["name"]}}</h2>
     <div class="col-md-4">
       <!-- <h3 class="text-center">Muscles Used</h3> -->
-      <hr/>
+      <!-- <hr/> -->
       <ul>
-        <li><button ng-repeat="muscle in muscles" ng-click="goToMuscle(muscle['id'])">{{muscle["name"]}}</button></li>
+        <li ng-repeat="muscle in muscles">
+          <button ng-click="goToMuscle(muscle['id'])" ng-show="muscle['name']" class="btn btn-default">{{muscle["name"]}}</button>
+        </li>
       </ul>
     </div>
 
     <div class="col-md-12">
-      <img src="{{pose['img1url']}}" alt="{{pose['name']}}" class="img-responsive img-rounded">
+      <img src="{{pose['img1url']}}" alt="{{pose['name']}}" ng-show="pose['img1url']" class="img-responsive img-rounded">
       <p class="text-center lead">{{pose["description"]}}</p>
     </div>
     <div class="col-md-8">
-      <img src="{{pose['img2url']}}" alt="{{pose['name']}}" class="img-responsive img-rounded">
+      <img src="{{pose['img2url']}}" alt="{{pose['name']}}" ng-show="pose['img2url']" class="img-responsive img-rounded">
     </div>
 <!--   </div> -->
   </div>
