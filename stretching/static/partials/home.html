@@ -16,15 +16,17 @@
     <input type="checkbox" ng-model="myMuscles" value="{{muscle.id}}">{{muscle.name}}</label>
   </form>
  -->
-      <div class='col-md-3'>
+      <div class='col-xs-3 col-xs-offset-8'>
         <input type="text" ng-model="searchText" class="form-control" />
       </div>
 
-        <div class="col-md-9 col-md-offset-3">
-        </div>
+<!--         <div class="col-md-9 col-md-offset-3">
+        </div> -->
 
-  <div ng-repeat="c in classifications | filter:searchText" class="col-md-4"><p class="lead">{{c.name}}</p>
-  <button ng-repeat="pose in c.Pose | filter:searchText" class="btn btn-default poses-button" ng-click="filterPose(pose.id)">{{pose.name}}</button>
+  <div ng-repeat="c in classifications | filter:searchText" class="col-md-12"><h2 class="text-center pose_title">{{c.name}}</p>
+    <div class="center-block">
+     <button ng-repeat="pose in c.Pose | filter:searchText" class="btn btn-default pose_button" ng-click="filterPose(pose.id)">{{pose.name}}</button>
+    </div>
   <!-- <hr /> -->
 <!-- <br /><br /> -->
   </div>
