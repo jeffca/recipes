@@ -8,30 +8,30 @@
 
   });
 </script>
+<!-- <button class="btn">FJi</button> -->
+<a class="item item-icon-left balanced" ng-click="newVocabularyTest(1)">
+              <i class="icon ion-android-arrow-dropright-circle"></i>
+                Start Test #1
+</a>
 
+
+<div id="test" ng-show="currentIndex<9">
+      <small ng-show="question.choicea">Question {{currentIndex+1}} of 9</small>
+
+      <p>{{question.question}} <small><i ng-show="question.postest">({{question.postest}})</i></small></p>
+
+      <div class="radio" ng-show="question.choicea">
+        <label><input name="answer" id="a" type="radio" ng-model="choice.answer" value="{{choicea}}">{{choicea}}</label></div>
+        <div class="radio" class="form-control"><label><input name="answer" id="b" type="radio" ng-model="choice.answer" value="{{choiceb}}">{{choiceb}}</label></div>  
+        <div class="radio" class="form-control"><label><input name="answer" id="c" type="radio" ng-model="choice.answer" value="{{choicec}}">{{choicec}}</label></div>  
+        <div class="radio" class="form-control"><label><input name="answer" id="d" type="radio" ng-model="choice.answer" value="{{choiced}}">{{choiced}}</label></div>                        
+        <div class="radio" class="form-control"><label><input id="e" type="radio" ng-model="choice.answer" value="{{correctchoice}}">{{correctchoice}}</label></div>
+        <p>&nbsp;</p>
+      <button type="submit" class="button button-large button-balanced" ng-disabled="!choice.answer" ng-click="submit('vocab word')" ng-show="question.choicea">Submit</button>
+
+</div>
 <div class="col-md-12">
 
-<!--   <form role="form" class="form">
-    <label ng-repeat="muscle in muscles">
-    <input type="checkbox" ng-model="myMuscles" value="{{muscle.id}}">{{muscle.name}}</label>
-  </form>
- -->
-      <div class='col-xs-5 col-xs-offset-8'>
-        <input type="text" ng-model="searchText" class="form-control" />
-      </div>
+    <!-- <img ng-repeat="v in vocabulary" src="{{v.url}}" alt="{{v.picture}}" class="img-rounded"></img> -->
 
-<!--         <div class="col-md-9 col-md-offset-3">
-        </div> -->
-
-  <div ng-repeat="c in classifications | filter:searchText" class="col-md-12"><h2 class="text-center pose_title">{{c.name}}</p>
-    <div class="center-block">
-     <button ng-repeat="pose in c.Pose | filter:searchText" class="btn btn-default pose_button" ng-click="filterPose(pose.id)">{{pose.name}}</button>
-    </div>
-  <!-- <hr /> -->
-<!-- <br /><br /> -->
-  </div>
-<!-- <hr>
-
-  <button ng-repeat="muscle in muscles" class="btn btn-primary btn-xlarge" ng-click="filterCategory(muscle.id)">{{muscle.name}}</button>
- -->
 </div>

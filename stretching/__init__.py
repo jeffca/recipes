@@ -29,10 +29,8 @@ manager = flask.ext.restless.APIManager(app, flask_sqlalchemy_db=db)
 from stretching.views import aview
 from stretching.models import *
 
-manager.create_api(Classification, methods=['GET', 'POST'], results_per_page=None)
-manager.create_api(Muscle, methods=['GET', 'POST', 'DELETE'], results_per_page=None)
-manager.create_api(Muscle_Pose, methods=['GET', 'POST'], results_per_page=None)
-manager.create_api(Pose, methods=['GET', 'POST'], results_per_page=None)
+# manager.create_api(comps, methods=['GET', 'POST'], results_per_page=None)
+	
 
 @app.teardown_request
 def shutdown_session(exception=None):

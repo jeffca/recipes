@@ -29,6 +29,7 @@
       font-family: Arial;
       color: #333;
       letter-spacing: 1.2px;
+      padding-right: 4.5%;
 
     }
 
@@ -43,6 +44,12 @@
       letter-spacing: 1.2px;
     }
 
+    img {
+      width: 100%;
+      float: left;
+      margin: 4%;
+    }
+
   </style>
 
 <script type="text/javascript">
@@ -54,34 +61,12 @@
 
    var JeffCaStretching = angular.module('JeffCaStretching', ['ngResource', 'underscore']);
 
-    JeffCaStretching.factory("Classification", function($resource) {
-        return $resource("/api/Classification/:Id", { Id: "@Id"}, {
-          "update": {method:"PUT"},
-          "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
-        });
-    });
-
-    JeffCaStretching.factory("Muscle", function($resource) {
-        return $resource("/api/Muscle/:Id", { Id: "@Id"}, {
-          "update": {method:"PUT"},
-          "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
-        });
-    });
-
-    JeffCaStretching.factory("Muscle_Pose", function($resource) {
-        return $resource("/api/Muscle_Pose/:Id", { Id: "@Id"}, {
-          "update": {method:"PUT"},
-          "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
-        });
-    });
-
-    JeffCaStretching.factory("Pose", function($resource) {
-        return $resource("/api/Pose/:Id", { Id: "@Id"}, {
-          "update": {method:"PUT"},
-          "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
-        });
-    });
-
+    // JeffCaStretching.factory("Comps", function($resource) {
+    //     return $resource("/api/comps/:Id", { Id: "@Id"}, {
+    //       "update": {method:"PUT"}, 
+    //       "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
+    //     });
+    // });
 
     JeffCaStretching.config(function($routeProvider) {
        $routeProvider
@@ -91,22 +76,67 @@
         .otherwise({ redirectTo: '/'});
     });
 
-    JeffCaStretching.controller('MyController', function($scope, $rootScope, $http, $location, Classification, Muscle, Pose, _) {
+    JeffCaStretching.controller('MyController', function($scope, $rootScope, $http, $location,  _) {
+        function shuffle(array) {
+            for (var i = array.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+            return array;
+        }
 
-      var classifications = Classification.query(function() {
-        $http.get('/api/Classification').success(function(data) {
-          $scope.classifications = data.objects;
+      $scope.newVocabularyTest=function(){
+        var req = {
+          method: 'GET',
+          url: 'https://api.fieldbook.com/v1/57ca5f20e13ef4030064f045/vocabulary_tests/',
+          headers: {
+           'Authorization': 'Basic ' + btoa('key-1:7pvF0z57nOLkFi7hGiMa')
+          },
+        };
+        $http(req).success(function(data){
+          $scope.vocabulary=_.where(data,{"testid":1});
+          console.log($scope.vocabulary);
+          $scope.currentIndex=0;
+          $scope.question=$scope.vocabulary[$scope.currentIndex];
+          $scope.array1=["choicea","choiceb","choicec","choiced","correctchoice"];
+          shuffle($scope.array1); //[5, 1, 4, 3, 2]
+          $scope.choicea=$scope.vocabulary[$scope.currentIndex][$scope.array1[0]];
+          $scope.choiceb=$scope.vocabulary[$scope.currentIndex][$scope.array1[1]];
+          $scope.choicec=$scope.vocabulary[$scope.currentIndex][$scope.array1[2]];
+          $scope.choiced=$scope.vocabulary[$scope.currentIndex][$scope.array1[3]];
+          $scope.correctchoice=$scope.vocabulary[$scope.currentIndex][$scope.array1[4]];
+          console.log($scope.choicea);
+          console.log($scope.choiceb);
+          console.log($scope.choicec);
+          console.log($scope.choiced);
         });
-      });
+        $scope.choice={};        
+        $scope.results=0;
+      }
 
-
-      $scope.myMuscles = [];
-
-      $scope.filterPose = function(id) {
-        $rootScope.pose_id = id;
-        $location.path("/pose");
-      };        
-
+      $scope.submit=function(type){
+        console.log($scope.choice.answer);
+        console.log($scope.question.correctchoice);    
+        if ($scope.choice.answer==$scope.question.correctchoice) {
+          $scope.results+=1;
+          console.log("Correct!");
+          
+        }
+        $scope.currentIndex+=1;
+          $scope.array1=["choicea","choiceb","choicec","choiced","correctchoice"];
+          shuffle($scope.array1); //[5, 1, 4, 3, 2]
+          $scope.choicea=$scope.vocabulary[$scope.currentIndex][$scope.array1[0]];
+          $scope.choiceb=$scope.vocabulary[$scope.currentIndex][$scope.array1[1]];
+          $scope.choicec=$scope.vocabulary[$scope.currentIndex][$scope.array1[2]];
+          $scope.choiced=$scope.vocabulary[$scope.currentIndex][$scope.array1[3]];
+          $scope.correctchoice=$scope.vocabulary[$scope.currentIndex][$scope.array1[4]];
+        if ($scope.currentIndex!=9) {
+          $scope.question=$scope.vocabulary[$scope.currentIndex];
+        }      
+        console.log("test is over.");
+      }
     });
 
     JeffCaStretching.controller('PoseController', function($scope, $rootScope, $http, $location, Muscle, Pose, _) {                          
