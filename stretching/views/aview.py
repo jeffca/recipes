@@ -1,7 +1,7 @@
 from stretching import app, mail
 from flask import Flask, render_template, request, redirect, url_for, flash, Response
-from stretching.models import *
-from stretching.database import db_session
+# from stretching.models import *
+# from stretching.database import db_session
 # import datetime 
 # from datetime import timedelta
 # from flask_mail import Message
