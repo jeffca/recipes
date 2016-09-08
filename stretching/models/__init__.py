@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, Table, ForeignKey, DateTime, Boolean, Text, Float
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.associationproxy import association_proxy
-from stretching.database import Base
+# from stretching.database import Base
 
 # class comps(Base):
 # 	__tablename__ = 'comps'
