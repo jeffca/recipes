@@ -71,7 +71,7 @@
     JeffCaStretching.config(function($routeProvider) {
        $routeProvider
         .when('/', { controller: 'MyController', templateUrl: '/static/partials/home.html' })
-        .when('/pose', { controller: 'PoseController', templateUrl: '/static/partials/pose.html' })
+        .when('/practice', { controller: 'PracticeController', templateUrl: '/static/partials/practice.html' })
         .when('/muscle', { controller: 'MuscleController', templateUrl: '/static/partials/muscle.html' })
         .otherwise({ redirectTo: '/'});
     });
@@ -86,8 +86,46 @@
             }
             return array;
         }
+        var req = {
+          method: 'GET',
+          url: 'https://api.fieldbook.com/v1/57ca5f20e13ef4030064f045/tests/',
+          headers: {
+           'Authorization': 'Basic ' + btoa('key-1:7pvF0z57nOLkFi7hGiMa')
+          },
+        };
+        $http(req).success(function(data) {
+          $scope.tests=data;
+          console.log(data);
+        });
 
-      $scope.newVocabularyTest=function(){
+      $scope.newVocabularyTest=function() {
+        var req = {
+          method: 'GET',
+          url: 'https://api.fieldbook.com/v1/57ca5f20e13ef4030064f045/vocabulary_tests/',
+          headers: {
+           'Authorization': 'Basic ' + btoa('key-1:7pvF0z57nOLkFi7hGiMa')
+          },
+        };
+        var tests = [1,2,3]
+        shuffle(tests);
+        $http(req).success(function(data){
+          $scope.vocabulary=_.where(data,{"testtype":"sentence"});
+          shuffle($scope.vocabulary);
+          console.log($scope.vocabulary);
+          $scope.currentIndex=0;
+          $scope.question=$scope.vocabulary[$scope.currentIndex];
+          $scope.array1=["choicea","choiceb","choicec","choiced","correctchoice"];
+          shuffle($scope.array1);
+          $scope.choicea=$scope.vocabulary[$scope.currentIndex][$scope.array1[0]];
+          $scope.choiceb=$scope.vocabulary[$scope.currentIndex][$scope.array1[1]];
+          $scope.choicec=$scope.vocabulary[$scope.currentIndex][$scope.array1[2]];
+          $scope.choiced=$scope.vocabulary[$scope.currentIndex][$scope.array1[3]];
+          $scope.correctchoice=$scope.vocabulary[$scope.currentIndex][$scope.array1[4]];
+        });
+        $scope.choice={};        
+        $scope.results=0;
+      }
+      $scope.newWordTest=function() {
         var req = {
           method: 'GET',
           url: 'https://api.fieldbook.com/v1/57ca5f20e13ef4030064f045/vocabulary_tests/',
@@ -96,37 +134,59 @@
           },
         };
         $http(req).success(function(data){
-          $scope.vocabulary=_.where(data,{"testid":1});
+          $scope.vocabulary=_.where(data,{"testtype":"word"});
+          shuffle($scope.vocabulary);
           console.log($scope.vocabulary);
           $scope.currentIndex=0;
           $scope.question=$scope.vocabulary[$scope.currentIndex];
           $scope.array1=["choicea","choiceb","choicec","choiced","correctchoice"];
-          shuffle($scope.array1); //[5, 1, 4, 3, 2]
+          shuffle($scope.array1);
           $scope.choicea=$scope.vocabulary[$scope.currentIndex][$scope.array1[0]];
           $scope.choiceb=$scope.vocabulary[$scope.currentIndex][$scope.array1[1]];
           $scope.choicec=$scope.vocabulary[$scope.currentIndex][$scope.array1[2]];
           $scope.choiced=$scope.vocabulary[$scope.currentIndex][$scope.array1[3]];
           $scope.correctchoice=$scope.vocabulary[$scope.currentIndex][$scope.array1[4]];
-          console.log($scope.choicea);
-          console.log($scope.choiceb);
-          console.log($scope.choicec);
-          console.log($scope.choiced);
         });
         $scope.choice={};        
         $scope.results=0;
       }
-
-      $scope.submit=function(type){
+      $scope.newDefinitionTest=function() {
+        var req = {
+          method: 'GET',
+          url: 'https://api.fieldbook.com/v1/57ca5f20e13ef4030064f045/vocabulary_tests/',
+          headers: {
+           'Authorization': 'Basic ' + btoa('key-1:7pvF0z57nOLkFi7hGiMa')
+          },
+        };
+        $http(req).success(function(data){
+          $scope.vocabulary=_.where(data,{"testtype":"definition"});
+          shuffle($scope.vocabulary);
+          console.log($scope.vocabulary);
+          $scope.currentIndex=0;
+          $scope.question=$scope.vocabulary[$scope.currentIndex];
+          $scope.array1=["choicea","choiceb","choicec","choiced","correctchoice"];
+          shuffle($scope.array1);
+          $scope.choicea=$scope.vocabulary[$scope.currentIndex][$scope.array1[0]];
+          $scope.choiceb=$scope.vocabulary[$scope.currentIndex][$scope.array1[1]];
+          $scope.choicec=$scope.vocabulary[$scope.currentIndex][$scope.array1[2]];
+          $scope.choiced=$scope.vocabulary[$scope.currentIndex][$scope.array1[3]];
+          $scope.correctchoice=$scope.vocabulary[$scope.currentIndex][$scope.array1[4]];
+        });
+        $scope.choice={};        
+        $scope.results=0;
+      }      
+      $scope.submit=function(){
         console.log($scope.choice.answer);
         console.log($scope.question.correctchoice);    
         if ($scope.choice.answer==$scope.question.correctchoice) {
           $scope.results+=1;
           console.log("Correct!");
-          
+        } else {
+          console.log("incorrect.")
         }
         $scope.currentIndex+=1;
           $scope.array1=["choicea","choiceb","choicec","choiced","correctchoice"];
-          shuffle($scope.array1); //[5, 1, 4, 3, 2]
+          shuffle($scope.array1); 
           $scope.choicea=$scope.vocabulary[$scope.currentIndex][$scope.array1[0]];
           $scope.choiceb=$scope.vocabulary[$scope.currentIndex][$scope.array1[1]];
           $scope.choicec=$scope.vocabulary[$scope.currentIndex][$scope.array1[2]];
@@ -134,33 +194,24 @@
           $scope.correctchoice=$scope.vocabulary[$scope.currentIndex][$scope.array1[4]];
         if ($scope.currentIndex!=9) {
           $scope.question=$scope.vocabulary[$scope.currentIndex];
-        }      
-        console.log("test is over.");
+        } else {
+          console.log("test is over.");
+        }     
       }
     });
 
-    JeffCaStretching.controller('PoseController', function($scope, $rootScope, $http, $location, Muscle, Pose, _) {                          
-      var pose = Pose.query(function() {
-        $http.get('/api/Pose/'+$rootScope.pose_id).success(function(data) {
-          $scope.pose = data;
-          var muscle_ids = _.pluck(data["Muscle_Pose"], 'muscle_id');
-          var muscles_temp = [];
-          for (var muscle_id in muscle_ids) {
-            $http.get('/api/Muscle/' + muscle_ids[muscle_id]).success(function(data) {            
-              muscles_temp.push(data);
-            });
-          }
-          $scope.muscles = muscles_temp;
-        });
-      });
-
-      $scope.goToMuscle = function(muscle_id) {
-        $http.get('/api/Muscle/'+muscle_id).success(function(data) {
-          $rootScope.muscle_id = data["id"];
-          $rootScope.muscle = data["name"];
-          $location.path("/muscle");
-        });      
+    JeffCaStretching.controller('PracticeController', function($scope, $rootScope, $http, $location, _) {                          
+      var req = {
+        "method": "GET",
+          url: 'https://api.fieldbook.com/v1/57ca5f20e13ef4030064f045/words/',
+          headers: {
+           'Authorization': 'Basic ' + btoa('key-1:7pvF0z57nOLkFi7hGiMa')
+          },        
       };
+      $http(req).success(function(data) {
+          $scope.words=data;
+          console.log(data);
+      });
 
     });
 

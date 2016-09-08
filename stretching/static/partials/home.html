@@ -9,11 +9,9 @@
   });
 </script>
 <!-- <button class="btn">FJi</button> -->
-<a class="item item-icon-left balanced" ng-click="newVocabularyTest(1)">
-              <i class="icon ion-android-arrow-dropright-circle"></i>
-                Start Test #1
-</a>
-
+<a class="item item-icon-left balanced"><span ng-click='newVocabularyTest()'>Start Fill In The Sentence Test</span></a>
+<a class="item item-icon-left balanced"><span ng-click='newWordTest()'>Start Find The Word Test</span></a>
+<a class="item item-icon-left balanced"><span ng-click='newDefinitionTest()'>Start Find The Definition Test</span></a>
 
 <div id="test" ng-show="currentIndex<9">
       <small ng-show="question.choicea">Question {{currentIndex+1}} of 9</small>

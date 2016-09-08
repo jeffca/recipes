@@ -1,0 +1,23 @@
+<div class="col-md-12">
+
+<!--   <form role="form" class="form">
+    <label ng-repeat="muscle in muscles">
+    <input type="checkbox" ng-model="myMuscles" value="{{muscle.id}}">{{muscle.name}}</label>
+  </form>
+ -->
+<!-- <hr> -->
+
+    <div class="row" ng-repeat="w in words | orderBy:'word'">
+      <button class="btn btn-primary" ng-click="showDefinition = ! showDefinition">{{w.word}}</button>
+      <div id="{{w['word']}}" ng-show="showDefinition">
+        <div ng-hide="!w.noundefinition"><strong>noun:</strong> {{w.noundefinition}}</div>
+        <div ng-hide="!w.verbdefinition"><strong>verb:</strong> {{w.verbdefinition}}</div>
+        <div ng-hide="!w.adjectivedefinition"><strong>adjective:</strong> {{w.adjectivedefinition}}</div>
+        <div ng-hide="!w.nounsentence"><em>{{w.nounsentence}}</em></div>
+        <div ng-hide="!w.verbsentence"><em>{{w.verbsentence}}</em></div>
+        <div ng-hide="!w.adjective"><em>{{w.adjectivesentence}}</em></div>
+      </div>            
+  </div>
+
+
+</div>
