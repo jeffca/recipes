@@ -3,7 +3,7 @@ from flask_mail import Mail
 from flask.ext.sqlalchemy import SQLAlchemy
 import flask.ext.restless
 import base64
-from stretching.database import db_session
+# from stretching.database import db_session
 
 app = Flask(__name__)
 
