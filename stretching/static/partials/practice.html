@@ -1,13 +1,12 @@
+<style>
+
+  button, div {
+    margin-bottom: 1%;
+  }
+
+</style>
 <div class="col-md-12">
-
-<!--   <form role="form" class="form">
-    <label ng-repeat="muscle in muscles">
-    <input type="checkbox" ng-model="myMuscles" value="{{muscle.id}}">{{muscle.name}}</label>
-  </form>
- -->
-<!-- <hr> -->
-
-    <div class="row" ng-repeat="w in words | orderBy:'word'">
+    <div ng-repeat="w in packwords | orderBy:'word'">
       <button class="btn btn-primary" ng-click="showDefinition = ! showDefinition">{{w.word}}</button>
       <div id="{{w['word']}}" ng-show="showDefinition">
         <div ng-hide="!w.noundefinition"><strong>noun:</strong> {{w.noundefinition}}</div>
@@ -18,6 +17,34 @@
         <div ng-hide="!w.adjective"><em>{{w.adjectivesentence}}</em></div>
       </div>            
   </div>
+<div class="col-md-12" ng-hide="w.noundefinition">
+  <div class="col-md-6"><h2 ng-click="startPack(1)">Start pack #1</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(2)">Start pack #2</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(3)">Start pack #3</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(4)">Start pack #4</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(5)">Start pack #5</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(6)">Start pack #6</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(7)">Start pack #7</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(8)">Start pack #8</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(9)">Start pack #9</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(10)">Start pack #10</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(11)">Start pack #11</h2>
+  </div>
+  <div class="col-md-6"><h2 ng-click="startPack(12)">Start pack #12</h2>
+  </div>
+</div>
+
+
 
 
 </div>

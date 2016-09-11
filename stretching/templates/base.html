@@ -212,7 +212,9 @@
           $scope.words=data;
           console.log(data);
       });
-
+      $scope.startPack=function(packid){
+        $scope.packwords = _.where($scope.words, {"packid":packid});
+      };
     });
 
     JeffCaStretching.controller('MuscleController', function($scope, $rootScope, $http, $location, Muscle, Pose, Muscle_Pose, _) {

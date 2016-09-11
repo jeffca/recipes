@@ -9,9 +9,9 @@
   });
 </script>
 <!-- <button class="btn">FJi</button> -->
-<a class="item item-icon-left balanced"><span ng-click='newVocabularyTest()'>Start Fill In The Sentence Test</span></a>
-<a class="item item-icon-left balanced"><span ng-click='newWordTest()'>Start Find The Word Test</span></a>
-<a class="item item-icon-left balanced"><span ng-click='newDefinitionTest()'>Start Find The Definition Test</span></a>
+<a class="item item-icon-left balanced"><span ng-click='newVocabularyTest()'>Complete the sentence</span></a><br />
+<a class="item item-icon-left balanced"><span ng-click='newWordTest()'>Find the word</span></a><br />
+<a class="item item-icon-left balanced"><span ng-click='newDefinitionTest()'>Find the definition</span></a><br />
 
 <div id="test" ng-show="currentIndex<9">
       <small ng-show="question.choicea">Question {{currentIndex+1}} of 9</small>
@@ -25,7 +25,7 @@
         <div class="radio" class="form-control"><label><input name="answer" id="d" type="radio" ng-model="choice.answer" value="{{choiced}}">{{choiced}}</label></div>                        
         <div class="radio" class="form-control"><label><input id="e" type="radio" ng-model="choice.answer" value="{{correctchoice}}">{{correctchoice}}</label></div>
         <p>&nbsp;</p>
-      <button type="submit" class="button button-large button-balanced" ng-disabled="!choice.answer" ng-click="submit('vocab word')" ng-show="question.choicea">Submit</button>
+      <button type="submit" class="btn button-large button-balanced btn-success" ng-disabled="!choice.answer" ng-click="submit('vocab word')" ng-show="question.choicea">Submit</button>
 
 </div>
 <div class="col-md-12">
