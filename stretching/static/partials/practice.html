@@ -2,52 +2,82 @@
 
 
 </style>
-<div class="col-md-3" ng-hide="w.noundefinition">
-  <div><h2 ng-click="startPack(1)">Start pack #1</h2>
+<div class="col-md-6 row" ng-hide="w.noundefinition">
+
+  <div>
+  <div><h2 ng-hide="packwords" ng-click="startPack(2)">Start pack #2</h2>
   </div>
-  <div><h2 ng-click="startPack(2)">Start pack #2</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(3)">Start pack #3</h2>
   </div>
-  <div><h2 ng-click="startPack(3)">Start pack #3</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(4)">Start pack #4</h2>
   </div>
-  <div><h2 ng-click="startPack(4)">Start pack #4</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(5)">Start pack #5</h2>
   </div>
-  <div><h2 ng-click="startPack(5)">Start pack #5</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(6)">Start pack #6</h2>
   </div>
-  <div><h2 ng-click="startPack(6)">Start pack #6</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(7)">Start pack #7</h2>
   </div>
-  <div><h2 ng-click="startPack(7)">Start pack #7</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(8)">Start pack #8</h2>
   </div>
-  <div><h2 ng-click="startPack(8)">Start pack #8</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(9)">Start pack #9</h2>
   </div>
-  <div><h2 ng-click="startPack(9)">Start pack #9</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(10)">Start pack #10</h2>
   </div>
-  <div><h2 ng-click="startPack(10)">Start pack #10</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(11)">Start pack #11</h2>
   </div>
-  <div><h2 ng-click="startPack(11)">Start pack #11</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(12)">Start pack #12</h2>
   </div>
-  <div><h2 ng-click="startPack(12)">Start pack #12</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(13)">Start pack #13</h2>
   </div>
-  <div><h2 ng-click="startPack(13)">Start pack #13</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(14)">Start pack #14</h2>
   </div>
-  <div><h2 ng-click="startPack(14)">Start pack #14</h2>
+  <div><h2 ng-hide="packwords" ng-click="startPack(15)">Start pack #15</h2>  
   </div>
-  <div><h2 ng-click="startPack(15)">Start pack #15</h2>  
-  </div>
+</div> 
 </div>
   <div>
-    <div ng-repeat="w in packwords | orderBy:'word'" class="col-md-9">
+    <div ng-repeat="w in packwords | orderBy:'word'" class="col-md-6 col-md-offset-3">
       <h3 ng-click="showDefinition = ! showDefinition">{{w.word}}</h3>
       <div id="{{w['word']}}">
         <div ng-hide="!w.noundefinition"><strong>noun:</strong> {{w.noundefinition}}</div>
         <div ng-hide="!w.verbdefinition"><strong>verb:</strong> {{w.verbdefinition}}</div>
         <div ng-hide="!w.adjectivedefinition"><strong>adjective:</strong> {{w.adjectivedefinition}}</div>
-        <div ng-hide="!w.nounsentence"><em>{{w.nounsentence}}</em></div>
-        <div ng-hide="!w.verbsentence"><em>{{w.verbsentence}}</em></div>
-        <div ng-hide="!w.adjectivesentence"><em>{{w.adjectivesentence}}</em></div>
+        <p><a ng-click="showSentence =! showSentence">Show Sentence</a></p>
+        <div ng-hide="!w.nounsentence" ng-show="showSentence"><em>{{w.nounsentence}}</em></div>
+        <div ng-hide="!w.verbsentence" ng-show="showSentence"><em>{{w.verbsentence}}</em></div>
+        <div ng-hide="!w.adjectivesentence" ng-show="showSentence"><em>{{w.adjectivesentence}}</em></div>
       </div>            
   </div>
 
-
+  <div class="col-md-6 row">
+  <div><h2 ng-hide="!packwords" ng-click="startPack(2)">Start pack #2</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(3)">Start pack #3</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(4)">Start pack #4</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(5)">Start pack #5</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(6)">Start pack #6</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(7)">Start pack #7</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(8)">Start pack #8</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(9)">Start pack #9</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(10)">Start pack #10</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(11)">Start pack #11</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(12)">Start pack #12</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(13)">Start pack #13</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(14)">Start pack #14</h2>
+  </div>
+  <div><h2 ng-hide="!packwords" ng-click="startPack(15)">Start pack #15</h2>  
+  </div>
 
 
 
