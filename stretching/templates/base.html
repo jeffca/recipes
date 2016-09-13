@@ -70,9 +70,8 @@
 
     JeffCaStretching.config(function($routeProvider) {
        $routeProvider
-        .when('/', { controller: 'MyController', templateUrl: '/static/partials/home.html' })
-        .when('/practice', { controller: 'PracticeController', templateUrl: '/static/partials/practice.html' })
-        .when('/muscle', { controller: 'MuscleController', templateUrl: '/static/partials/muscle.html' })
+        .when('/', { controller: 'PracticeController', templateUrl: '/static/partials/practice.html' })
+        .when('/tests', { controller: 'MyController', templateUrl: '/static/partials/home.html' })
         .otherwise({ redirectTo: '/'});
     });
 

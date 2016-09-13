@@ -10,11 +10,18 @@
 
 </script>
 
+<h1>Welcome to Practice Tests!</h1>
+<p>There are three types of tests:</p>
+  <ol><li>Complete the sentence shows you a sentence and you must fill in the blank.</li>
+    <li>Find the word shows you a definition and you must choose the right word.</li>
+    <li>Find the definition shows you a word and you must choose the right definition.</li></ol>
+<p>Get started below!</p>
 <!-- <button class="btn">FJi</button> -->
-<a class="item item-icon-left balanced"><span ng-click='newVocabularyTest()'>Complete the sentence</span></a><br />
-<a class="item item-icon-left balanced"><span ng-click='newWordTest()'>Find the word</span></a><br />
-<a class="item item-icon-left balanced"><span ng-click='newDefinitionTest()'>Find the definition</span></a><br />
-
+<div ng-show="!question">
+  <a class="item item-icon-left balanced" ng-click='newVocabularyTest()'>Complete the sentence</a><br />
+  <a class="item item-icon-left balanced" ng-click='newWordTest()'>Find the word</a><br />
+  <a class="item item-icon-left balanced" ng-click='newDefinitionTest()'>Find the definition</a><br />
+</div>
 <div id="test" ng-show="currentIndex<9">
       <small ng-show="question.choicea">Question {{currentIndex+1}} of 9</small>
 
@@ -32,7 +39,6 @@
 
 </div>
 <div class="col-md-12">
-
     <!-- <img ng-repeat="v in vocabulary" src="{{v.url}}" alt="{{v.picture}}" class="img-rounded"></img> -->
 
 </div>
