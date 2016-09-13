@@ -25,6 +25,7 @@
         <div class="radio" class="form-control"><label><input name="answer" id="d" type="radio" ng-model="choice.answer" value="{{choiced}}">{{choiced}}</label></div>                        
         <div class="radio" class="form-control"><label><input id="e" type="radio" ng-model="choice.answer" value="{{correctchoice}}">{{correctchoice}}</label></div>
         <p>&nbsp;</p>
+        <p ng-show="message">Question #{{currentIndex}} - {{message}}</p>
       <button type="submit" class="btn button-large button-balanced btn-success" ng-disabled="!choice.answer" ng-click="submit('vocab word')" ng-show="question.choicea">Submit</button>
 
 </div>

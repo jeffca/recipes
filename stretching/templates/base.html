@@ -122,6 +122,7 @@
           $scope.choiced=$scope.vocabulary[$scope.currentIndex][$scope.array1[3]];
           $scope.correctchoice=$scope.vocabulary[$scope.currentIndex][$scope.array1[4]];
         });
+        $scope.message="";
         $scope.choice={};        
         $scope.results=0;
       }
@@ -148,6 +149,7 @@
           $scope.correctchoice=$scope.vocabulary[$scope.currentIndex][$scope.array1[4]];
         });
         $scope.choice={};        
+        $scope.message="";
         $scope.results=0;
       }
       $scope.newDefinitionTest=function() {
@@ -173,6 +175,7 @@
           $scope.correctchoice=$scope.vocabulary[$scope.currentIndex][$scope.array1[4]];
         });
         $scope.choice={};        
+        $scope.message="";
         $scope.results=0;
       }      
       $scope.submit=function(){
@@ -180,8 +183,10 @@
         console.log($scope.question.correctchoice);    
         if ($scope.choice.answer==$scope.question.correctchoice) {
           $scope.results+=1;
+          $scope.message="correct";
           console.log("Correct!");
         } else {
+          $scope.message="incorrect";
           console.log("incorrect.")
         }
         $scope.currentIndex+=1;
