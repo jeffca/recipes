@@ -255,8 +255,6 @@
       });
       $scope.startPack=function(packid){
         $scope.packwords = _.where($scope.words, {"packid":packid});
-        $scope.word = $scope.packwords[0];
-        console.log($scope.word);
       };
     });
 
