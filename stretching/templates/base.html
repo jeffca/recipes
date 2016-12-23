@@ -9,8 +9,11 @@
     ga('create', 'UA-84128605-1', 'auto');
     ga('send', 'pageview');
   </script>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel='stylesheet' type='text/css' href='/static/bootstrap/css/bootstrap.css'>
+  <link rel='stylesheet' type='text/css' href='/static/bootstrap/css/bootstrap.css'>
+  <script src="/node_modules/angulartics-google-analytics/dist/angulartics-ga.min.js"></script>
+  <script src="/node_modules/angulartics/dist/angulartics-ga.min.js"></script>
 	<script src="/static/angular.min.js"></script>
 	<script src="/static/angular-resource.min.js"></script>
 	<script src="/static/angularui.min.js"></script>
@@ -94,7 +97,7 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
     ga('create', 'UA-84128605-1', 'auto');
-    ga('send', 'pageview');
+    // ga('send', 'pageview');
 
     var underscore = angular.module('underscore', []);
     underscore.factory('_', function() {
@@ -102,7 +105,7 @@
     });
 
 
-   var JeffCaStretching = angular.module('JeffCaStretching', ['ngResource', 'underscore']);
+   var JeffCaStretching = angular.module('JeffCaStretching', ['ngResource', 'underscore', 'angulartics', 'angulartics-google-analytics']);
 
     // JeffCaStretching.factory("Comps", function($resource) {
     //     return $resource("/api/comps/:Id", { Id: "@Id"}, {
