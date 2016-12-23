@@ -24,6 +24,10 @@
         <p>&nbsp;</p>
         <p ng-show="message">Question #{{currentIndex}} - {{message}}</p>
       <button type="submit" class="btn button-large button-balanced btn-success" ng-disabled="!choice.answer" ng-click="submit('vocab word')" ng-show="question.choicea">Submit</button>
+      </div>
+      <div ng-show="results <= 9">
+        <p>{{results}}/9 correct</p>
+      </div>
 
 </div>
 <div class="col-md-12">
