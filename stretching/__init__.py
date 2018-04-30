@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_mail import Mail
-from flask.ext.sqlalchemy import SQLAlchemy
-import flask.ext.restless
+# from flask.ext.sqlalchemy import SQLAlchemy
+# import flask.ext.restless
 import base64
 # from stretching.database import db_session
 
