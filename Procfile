@@ -1,1 +1,1 @@
-web: gunicorn stretching:app
+web: gunicorn grepractice:app
