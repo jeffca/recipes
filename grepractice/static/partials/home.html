@@ -1,0 +1,37 @@
+<title>GRE Practice Tests</title>
+
+<h1>Welcome to practice tests!</h1>
+<div>
+<p>There are three types of tests:</p>
+  <ol><li>Complete the sentence shows you a sentence and you must fill in the blank.</li>
+    <li>Find the word shows you a definition and you must choose the right word.</li>
+    <li>Find the definition shows you a word and you must choose the right definition.</li></ol>
+<div ng-show="!question">
+  <a class="item item-icon-left balanced" ng-click='newVocabularyTest()'>Complete the sentence</a><br />
+  <a class="item item-icon-left balanced" ng-click='newWordTest()'>Find the word</a><br />
+  <a class="item item-icon-left balanced" ng-click='newDefinitionTest()'>Find the definition</a><br />
+</div>
+<div id="test" ng-show="currentIndex<9">
+      <small ng-show="question.choicea">Question {{currentIndex+1}} of 9</small>
+
+      <p>{{question.question}} <small><i ng-show="question.postest">({{question.postest}})</i></small></p>
+
+      <div class="radio" ng-show="question.choicea">
+        <label><input name="answer" id="a" type="radio" ng-model="choice.answer" value="{{choicea}}">{{choicea}}</label></div>
+        <div class="radio" class="form-control"><label><input name="answer" id="b" type="radio" ng-model="choice.answer" value="{{choiceb}}">{{choiceb}}</label></div>  
+        <div class="radio" class="form-control"><label><input name="answer" id="c" type="radio" ng-model="choice.answer" value="{{choicec}}">{{choicec}}</label></div>  
+        <div class="radio" class="form-control"><label><input name="answer" id="d" type="radio" ng-model="choice.answer" value="{{choiced}}">{{choiced}}</label></div>                        
+        <div class="radio" class="form-control"><label><input id="e" type="radio" ng-model="choice.answer" value="{{correctchoice}}">{{correctchoice}}</label></div>
+        <p>&nbsp;</p>
+        <p ng-show="message">Question #{{currentIndex}} - {{message}}</p>
+      <button type="submit" class="btn button-large button-balanced btn-success" ng-disabled="!choice.answer" ng-click="submit('vocab word')" ng-show="question.choicea">Submit</button>
+      </div>
+      <div ng-show="results <= 9">
+        <p>{{results}}/9 correct</p>
+      </div>
+
+</div>
+<div class="col-md-12">
+    <!-- <img ng-repeat="v in vocabulary" src="{{v.url}}" alt="{{v.picture}}" class="img-rounded"></img> -->
+
+</div>
