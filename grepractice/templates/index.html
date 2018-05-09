@@ -3,7 +3,14 @@
 
 {% block head %}
 
-<app-root></app-root>
+
+<style>
+  .header {
+    margin-bottom: 1%;
+  }    
+
+</style>
+
 <script>
   (function(i, s, o, g, r, a, m) {
             i['GoogleAnalyticsObject'] = r;
@@ -34,16 +41,17 @@ ga('send', 'pageview');
 
 {% extends 'base.html' %}
 
+
 {% block body %}
 
 <div ng-app="JeffCaStretching">
 
   <div class="container">
       <h1 class="text-center"><a style="font-family:Helvetica;" href="/" class="title" alt="GRE">Graduate Record Examination Vocabulary Practice</a></h1>
-      <button class="btn btn-primary"><a style="color:white;" href="/" class="title">Practice</a></button>
-      <button class="btn btn-primary"><a style="color:white;" href="/#/tests" class="title">Practice Tests</a></button>
-      <button class="btn btn-primary"><a style="color:white;" href="/#/flashcards" class="title">Flashcards</a></button>       
-      <button class="btn btn-primary"><a style="color:white;" href="/#/sentences" class="title">Sentences</a></button>       
+      <button class="btn btn-primary header"><a style="color:white;" href="/" class="title">Practice</a></button>
+      <button class="btn btn-primary header"><a style="color:white;" href="/#/tests" class="title">Practice Tests</a></button>
+      <button class="btn btn-primary header"><a style="color:white;" href="/#/flashcards" class="title">Flashcards</a></button>       
+      <button class="btn btn-primary header"><a style="color:white;" href="/#/sentences" class="title">Sentences</a></button>       
   </div>
 
 </div>

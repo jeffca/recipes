@@ -16,9 +16,9 @@
     <li>Find the word shows you a definition and you must choose the right word.</li>
     <li>Find the definition shows you a word and you must choose the right definition.</li></ol>
 <div ng-show="!question">
-  <button class="btn btn-secondary" ng-click='newVocabularyTest()'><h1>Complete the sentence</h1></button>
-  <button class="btn btn-secondary" ng-click='newWordTest()'><h1>Find the word</h1></button>
-  <button class="btn btn-secondary" ng-click='newDefinitionTest()'><h1>Find the definition</h1></button>
+  <button class="btn btn-secondary" ng-click='newVocabularyTest()'><h3>Complete the sentence</h3></button>
+  <button class="btn btn-secondary" ng-click='newWordTest()'><h3>Find the word</h3></button>
+  <button class="btn btn-secondary" ng-click='newDefinitionTest()'><h3>Find the definition</h3></button>
 </div>
 <div id="test" ng-show="currentIndex<9">
       <small ng-show="question.choicea">Question {{currentIndex+1}} of 9</small>
