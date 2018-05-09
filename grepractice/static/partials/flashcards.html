@@ -37,7 +37,7 @@
   <!-- <p>&nbsp;</p> -->
   <!-- <p>&nbsp;</p> -->
   <div class="center"><button class="btn btn-secondary" ng-hide="!word" ng-click="flip(word.id)">Flip</button></div>
-        <p class="center" ng-hide="!w"><a ng-click="showSentence =! showSentence">Show Sentence</a></p>
+        <div class="center" ng-hide="!w"><button class="btn btn-warning" ng-click="showSentence =! showSentence">Show Sentence</button></p>
         <div ng-show="showSentence" class="center"><em>{{w.nounsentence}}</em></div>
         <div ng-show="showSentence" class="center"><em>{{w.verbsentence}}</em></div>
         <div ng-show="showSentence" class="center"><em>{{w.adjectivesentence}}</em></div>
