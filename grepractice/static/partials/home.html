@@ -1,15 +1,24 @@
 <title>GRE Practice Tests</title>
 
+<style>
+    #content .btn {
+      margin-right: 100%;
+      margin-bottom: 1%;
+      margin-left: 1.3em;
+      /*width: 26.5em;*/
+    }
+</style>
+
 <h1>Welcome to practice tests!</h1>
-<div>
+<div id="content">
 <p>There are three types of tests:</p>
   <ol><li>Complete the sentence shows you a sentence and you must fill in the blank.</li>
     <li>Find the word shows you a definition and you must choose the right word.</li>
     <li>Find the definition shows you a word and you must choose the right definition.</li></ol>
 <div ng-show="!question">
-  <a class="item item-icon-left balanced" ng-click='newVocabularyTest()'>Complete the sentence</a><br />
-  <a class="item item-icon-left balanced" ng-click='newWordTest()'>Find the word</a><br />
-  <a class="item item-icon-left balanced" ng-click='newDefinitionTest()'>Find the definition</a><br />
+  <button class="btn btn-secondary" ng-click='newVocabularyTest()'><h1>Complete the sentence</h1></button>
+  <button class="btn btn-secondary" ng-click='newWordTest()'><h1>Find the word</h1></button>
+  <button class="btn btn-secondary" ng-click='newDefinitionTest()'><h1>Find the definition</h1></button>
 </div>
 <div id="test" ng-show="currentIndex<9">
       <small ng-show="question.choicea">Question {{currentIndex+1}} of 9</small>

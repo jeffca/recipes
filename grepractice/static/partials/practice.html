@@ -12,6 +12,14 @@
     })();
   </script> 
 
+  <style>
+    #content > .btn {
+      margin-right: 1%;
+      margin-bottom: 1%;
+      width: 20em;
+    }
+  </style>
+
   <div class="row">
     <h1>Welcome to studying vocabulary!</h1>
   </div>
@@ -21,30 +29,20 @@
 <!--   <div class="row">
     <small>Questions? Contact jeff12ca@gmail.com</small>
   </div>   -->
-<div class="col-md-6 row" ng-hide="w.noundefinition">
+<div class="col-md-12 row" id="content" ng-hide="w.noundefinition">
 
 
-  <div><a ng-hide="packwords" ng-click="startPack(1)">Start pack #1</a>
-  </div>
-  <div><a ng-hide="packwords" ng-click="startPack(2)">Start pack #2</a>
-  </div>
-  <div><a ng-hide="packwords" ng-click="startPack(3)">Start pack #3</a>
-  </div>
-  <div><a ng-hide="packwords" ng-click="startPack(4)">Start pack #4</a>
-  </div>
-  <div><a ng-hide="packwords" ng-click="startPack(5)">Start pack #5</a>
-  </div>
-  <div><a ng-hide="packwords" ng-click="startPack(6)">Start pack #6</a>
-  </div>
-  <div><a ng-hide="packwords" ng-click="startPack(7)">Start pack #7</a>
-  </div>
-  <div><a ng-hide="packwords" ng-click="startPack(8)">Start pack #8</a>
-  </div>
-  <div><a ng-hide="packwords" ng-click="startPack(9)">Start pack #9</a>
-  </div>
-  <div><a ng-hide="packwords" ng-click="startPack(10)">Start pack #10</a>
-  </div>
-</div> 
+  <button class="btn btn-secondary" ng-click="startPack(1)"><h1>Start pack #1</h1></button>
+  <button class="btn btn-secondary" ng-click="startPack(2)"><h1>Start pack #2</h1></button>
+  <button class="btn btn-secondary" ng-click="startPack(3)"><h1>Start pack #3</h1></button>
+  <button class="btn btn-secondary" ng-click="startPack(4)"><h1>Start pack #4</h1></button>
+  <button class="btn btn-secondary" ng-click="startPack(5)"><h1>Start pack #5</h1></button>
+  <button class="btn btn-secondary" ng-click="startPack(6)"><h1>Start pack #6</h1></button>
+  <button class="btn btn-secondary" ng-click="startPack(7)"><h1>Start pack #7</h1></button>
+  <button class="btn btn-secondary" ng-click="startPack(8)"><h1>Start pack #8</h1></button>
+  <button class="btn btn-secondary" ng-click="startPack(9)"><h1>Start pack #9</h1></button>
+  <!-- <button class="btn btn-secondary" ng-click="startPack(10)"><h1>Start pack #10</h1></button> -->
+<!-- </div>  -->
 </div>
   <div>
     <div ng-repeat="w in packwords | orderBy:'word'" class="col-md-6 col-md-offset-3">

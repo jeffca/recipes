@@ -16,6 +16,10 @@
     .center {
       text-align: center;
     }
+
+    .center > button {
+      margin-bottom: 1%;
+    }
   </style>
 
   <div class="row">
@@ -24,9 +28,6 @@
   <div class="row">
     <p>Flip a card to begin.</p>
   </div>
-<!--   <div class="row">
-    <small>Questions? Contact jeff12ca@gmail.com</small>
-  </div>   -->
 
   <h1 class="center" ng-hide="w">{{word.word}}</h1>
   <div class="center" ng-hide="!w.noundefinition"><strong>noun:</strong> {{w.noundefinition}}</div>
@@ -35,9 +36,10 @@
   <!-- <p>&nbsp;</p> -->
   <!-- <p>&nbsp;</p> -->
   <!-- <p>&nbsp;</p> -->
-  <h3 class="center" ng-hide="!word"><a ng-click="flip(word.id)">Flip</a></h3>
+  <div class="center"><button class="btn btn-secondary" ng-hide="!word" ng-click="flip(word.id)">Flip</button></div>
         <p class="center" ng-hide="!w"><a ng-click="showSentence =! showSentence">Show Sentence</a></p>
         <div ng-show="showSentence" class="center"><em>{{w.nounsentence}}</em></div>
         <div ng-show="showSentence" class="center"><em>{{w.verbsentence}}</em></div>
         <div ng-show="showSentence" class="center"><em>{{w.adjectivesentence}}</em></div>
-<p class="center" ng-hide="!w"><a ng-click="next()">Next Word</a></p>  
+<!-- <p class="center" ng-hide="!w"><a ng-click="next()">Next Word</a></p>   -->
+  <div class="center"><button class="btn btn-secondary" ng-hide="!w" ng-click="next()">Next Word</button></div>
