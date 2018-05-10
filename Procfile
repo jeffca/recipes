@@ -1,1 +1,1 @@
-web: gunicorn grepractice:app
+web: gunicorn jeffcaphotography:app
