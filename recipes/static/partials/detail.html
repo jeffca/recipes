@@ -1,0 +1,32 @@
+<title>GRE Practice Tests</title>
+
+<div id="app">
+
+
+
+  <div class="jumbotron">
+  <h1 class="display-4">{{recipe}}</h1>
+  <p class="lead">${{menuprice}}</p>
+  
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/#" role="button">Back</a>
+  </p>
+</div>
+
+
+<div ng-repeat="photo in photos1" class="card text-center">
+  <img class="card-img-top" src="{{photo.menuimgurl}}" />
+  <div class="card-body">
+  <h3 class="card-title" ng-repeat="i in ingredients">
+    <p>{{i}}</p>
+  </h3>
+  <h4 style="text-align: center; text-decoration: underline;">Instructions</h4>
+  <p class="card-text" ng-repeat="i in instructions">
+    <span>{{i}}</span>
+  </p>
+  </div>
+</div>
+
+</div>
+</body>

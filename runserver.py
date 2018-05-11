@@ -1,5 +1,5 @@
 # app as application for wsgi
-from jeffcaphotography import app as application
+from recipes import app as application
 
 if __name__ == '__main__':
 	application.run(debug=True)

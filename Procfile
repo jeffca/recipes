@@ -1,1 +1,1 @@
-web: gunicorn jeffcaphotography:app
+web: gunicorn recipes:app
