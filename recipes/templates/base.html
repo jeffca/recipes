@@ -43,7 +43,7 @@
     JeffCaRecipes.controller('HomeController', function($scope, $rootScope, $http, $location) {                          
       var req = {
         "method": "GET",
-          url: 'https://api.fieldbook.com/v1/567333c2c16c410300d20da4/recipes'   
+          url: '/recipes'
       };
       $http(req).success(function(data) {
           console.log(data);

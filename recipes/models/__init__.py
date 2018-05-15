@@ -1,18 +1,16 @@
-from sqlalchemy import Column, Integer, String, Table, ForeignKey, DateTime, Boolean, Text, Float
-from sqlalchemy.orm import relationship, backref
-from sqlalchemy.ext.associationproxy import association_proxy
-# from stretching.database import Base
+from peewee import *
+database = PostgresqlDatabase('d8o164eqmava48', host="ec2-75-101-142-91.compute-1.amazonaws.com",
+                              user="uaipaqgenqqhdo",
+                              port="5432",
+                              password="b347a0c9c9f5994f09746706dd7e31c14eef23aac2b5aa41b82f7c17999b6d31")
 
-# class comps(Base):
-# 	__tablename__ = 'comps'
-# 	id = Column(Integer, primary_key=True)
-# 	mgrname = Column(String(50))
-# 	empname = Column(String(50))
-# 	comp = Column(String(50))
-# 	compamt = Column(Integer)
-# 	item = Column(String(50))
-# 	location = Column(String(50))
-# 	date = Column(DateTime)
-	
-	
+class BaseModel(Model):
+    class Meta:
+        database=database
+
+class Recipe(BaseModel):
+    recipe = CharField()
+    ingredients = CharField()
+    instructions = CharField()
+    menuimgurl = CharField()
 
