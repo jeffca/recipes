@@ -15,9 +15,6 @@ peewee==3.3.4
 psycopg2==2.7.4
 psycopg2-binary==2.7.4
 py2app==0.7.3
-pyOpenSSL==0.13.1
-pyparsing==2.0.1
 python-dateutil==1.5
-pytz==2013.7
 requests==2.18.4
 Werkzeug==0.14.1
