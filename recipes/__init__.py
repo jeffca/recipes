@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_mail import Mail
 # from flask.ext.sqlalchemy import SQLAlchemy
 # import flask.ext.restless
 import base64

@@ -7,7 +7,6 @@ from recipes.models import Recipe
 # from flask_mail import Message
 # from sqlalchemy import desc
 # from functools import wraps
-import json
 
 # Recipe.create_table(fail_silently=True)
 
