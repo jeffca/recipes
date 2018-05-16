@@ -40,43 +40,14 @@
     });
 
 
-    JeffCaRecipes.controller('HomeController', function($scope, $rootScope, $http, $location) {                          
+    JeffCaRecipes.controller('HomeController', function($scope, $rootScope, $http, $location, _) {                          
       var req = {
         "method": "GET",
           url: '/recipes'
       };
       $http(req).success(function(data) {
-          console.log(data);
-          $scope.photos1= [data[0]];
-          $scope.photos1.push(data[1]);
-          $scope.photos2= [data[2]];
-          $scope.photos2.push(data[3]);
-          $scope.photos3= [data[4]];
-          $scope.photos3.push(data[5]);
-          $scope.photos4= [data[6]];
-          $scope.photos4.push(data[7]);
-          $scope.photos5= [data[8]];
-          $scope.photos5.push(data[9]);
-          $scope.photos6= [data[10]];
-          $scope.photos6.push(data[11]);
-          $scope.photos7= [data[12]];
-          $scope.photos7.push(data[13]);
-          $scope.photos8= [data[14]];
-          $scope.photos8.push(data[15]);
-          $scope.photos9= [data[16]];
-          $scope.photos9.push(data[17]);
-          $scope.photos10= [data[18]];
-          $scope.photos10.push(data[19]);
-          $scope.photos11= [data[20]];
-          $scope.photos11.push(data[21]);
-          $scope.photos12= [data[22]];
-          $scope.photos12.push(data[23]);
-          $scope.photos13= [data[24]];
-          $scope.photos13.push(data[25]);
-          $scope.photos14= [data[26]];
-          $scope.photos14.push(data[27]);
-          $scope.photos15= [data[28]];
-          $scope.photos15.push(data[29]);                                                                                                                                 
+          $scope.recipes=data;
+          console.log($scope.recipes);                                                                                                                            
       });
 
       $scope.showDetail=function(recipe) {
@@ -110,18 +81,28 @@
     #footer {
       text-align: center;
       font-family: Helvetica, Arial;
+      clear: left;
       font-size: 9pt;
     }
 
-    .img-thumbnail {
-      width: 40em;
+    .card-img-top {
+      padding-left: 2%;
+      width: 20em;
       margin-right: 20%;
-      height: 25em;
+      height: 19em;
     }
 
-    .card > a {
+    #home > .card {
+      width: 21em;
+      float: left;
+      margin-left: 1%;
+      margin-bottom: 2%;
+    }
+
+    #home .card-body > button {
       margin-bottom: 2%;
       margin-top: 1%;
+      width: 14em;
     }
   </style>
 

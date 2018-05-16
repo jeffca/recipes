@@ -11,7 +11,8 @@ with open('recipes.csv', 'rb') as csvfile:
                           recipe=row[0],
                           ingredients=row[3],
                           instructions=row[5],
-                          menuimgurl=row[15])
+                          menuimgurl=row[15],
+                          category=row[16])
             i+=1
 #
 # Recipe.create(recipe="Rice pudding",

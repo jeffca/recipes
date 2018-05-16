@@ -13,4 +13,5 @@ class Recipe(BaseModel):
     ingredients = CharField()
     instructions = CharField()
     menuimgurl = CharField()
+    category = CharField()
 

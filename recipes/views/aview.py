@@ -22,6 +22,7 @@ def recipes():
 			'recipe': recipe.recipe,
 			'ingredients': recipe.ingredients,
 			'instructions': recipe.instructions,
-			'menuimgurl': recipe.menuimgurl
+			'menuimgurl': recipe.menuimgurl,
+			'category': recipe.category
 		})
 	return jsonify(allRecipes)
