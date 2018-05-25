@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f63f8ce3-9311-451b-9b08-11918913765c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipes/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipes/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipes/static/partials/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/static/partials/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipes/static/partials/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/static/partials/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipes/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recipes/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipes/views/aview.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/views/aview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python2.7/site-packages/flask/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python2.7/site-packages/flask/app.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/recipes/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="469">
-              <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
+            <state relative-caret-position="615">
+              <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
             </state>
           </provider>
         </entry>
@@ -79,7 +71,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/recipes/static/partials/detail.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="480">
@@ -127,18 +119,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scraper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/recipes/models/scraper.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="5" column="23" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -155,13 +135,13 @@
         <option value="$PROJECT_DIR$/recipes/models/scraper.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/seed.py" />
-        <option value="$PROJECT_DIR$/recipes/models/__init__.py" />
-        <option value="$PROJECT_DIR$/recipes/templates/index.html" />
         <option value="$PROJECT_DIR$/recipes/views/aview.py" />
         <option value="$PROJECT_DIR$/recipes/__init__.py" />
         <option value="$PROJECT_DIR$/recipes/templates/base.html" />
         <option value="$PROJECT_DIR$/recipes/static/partials/index.html" />
         <option value="$PROJECT_DIR$/recipes/static/partials/detail.html" />
+        <option value="$PROJECT_DIR$/recipes/models/__init__.py" />
+        <option value="$PROJECT_DIR$/recipes/templates/index.html" />
       </list>
     </option>
   </component>
@@ -179,8 +159,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="33" />
-    <option name="y" value="74" />
+    <option name="x" value="34" />
+    <option name="y" value="86" />
     <option name="width" value="1400" />
     <option name="height" value="785" />
   </component>
@@ -272,7 +252,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="33" y="74" width="1400" height="785" extended-state="0" />
+    <frame x="34" y="86" width="1400" height="785" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -455,12 +435,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/recipes/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recipes/static/partials/detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/recipes/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/recipes/static/partials/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" selection-start-line="18" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/399cb1dd-9b35-4489-a5ca-ba7bd3d5930c/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/recipes/models/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -474,29 +478,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/recipes/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="54" column="16" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipes/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="50" column="36" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipes/static/partials/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" selection-start-line="18" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/recipes/static/partials/detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+        <state relative-caret-position="615">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
         </state>
       </provider>
     </entry>
