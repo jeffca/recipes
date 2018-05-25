@@ -11,134 +11,26 @@
 <!--   <p class="lead">
     <a class="btn btn-primary btn-lg" href="#/detail" role="button">Learn more</a>
   </p>
- --></div>
+ -->
+</div>
 
- <div>
- 	<label for="b"><input id="b" type="radio" ng-model="recipe.category" value="breakfast">Breakfast</label>
- 	<label for="l"><input id="l" type="radio" ng-model="recipe.category" value="lunch">Lunch</label>
- 	<label for="d"><input id="d" type="radio" ng-model="recipe.category" value="dinner">Dinner</label>
- 	<label for="s"><input id="s" type="radio" ng-model="recipe.category" value="snack">Snack</label>
-  </div>
+
+
+ <!--<div>-->
+ 	<!--<label for="b"><input id="b" type="radio" ng-model="recipe.category" value="breakfast">Breakfast</label>-->
+ 	<!--<label for="l"><input id="l" type="radio" ng-model="recipe.category" value="lunch">Lunch</label>-->
+ 	<!--<label for="d"><input id="d" type="radio" ng-model="recipe.category" value="dinner">Dinner</label>-->
+ 	<!--<label for="s"><input id="s" type="radio" ng-model="recipe.category" value="snack">Snack</label>-->
+  <!--</div>-->
 <div id="home">
 <div class="card" ng-repeat="r in recipes | filter:recipe.category">
  <img class="card-img-top" src="{{r.menuimgurl}}" alt="Card image cap">
  <div class="card-body">
- <button ng-click="showDetail(r.recipe)" class="btn btn-primary btn-lg">Cook {{r.recipe}}</button>
+ <a ui-sref="detail({id:r.id})" class="btn btn-primary btn-lg">Cook {{r.recipe}}</a>
  </div>
 </div>
 </div>
 
-
-<!-- <div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos1 | filter:recipe.category">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
 </div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos2">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos3">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos4">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos5">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos6">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos7">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos8">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos9">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos10">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos11">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos12">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
-
-<div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos13">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
- -->
-<!-- <div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos14">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div>
- -->
-<!-- <div class="card-deck">
-<div class="card text-center" ng-repeat="photo in photos15">
- <img class="img-thumbnail" src="{{photo.menuimgurl}}" alt="Card image cap">
- <button ng-click="showDetail(photo.recipe)" class="btn btn-primary btn-lg">Cook {{photo.recipe}}</button>
-</div>
-</div> -->
-
-</div>
-
-
-
-</div>
-
 
 </body>

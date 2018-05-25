@@ -3,75 +3,55 @@
 <head>
 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" type='text/css'>
-  <!-- // <script src="/static/angulartics-google-analytics/dist/angulartics-ga.min.js"></script> -->
-  <!-- // <script src="/static/angulartics/dist/angulartics.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.0/underscore.js"></script>
-  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.1.5/angular.js"></script> 
-    <script src="/static/angular-resource.min.js"></script>
-  	<script src="/static/angularui.min.js"></script>
-   	<script type="text/javascript" src="/static/jquery-2.1.0.min.js"></script>
-  	<script src="/static/bootstrap/js/bootstrap.js" type="text/javascript"></script>
-  	<meta name="viewport" content="width=device-width, initial-scale=1"> 	
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous" type='text/css'>
+      <link rel="stylesheet" href="/static/ng-tags-input.bootstrap.min.css" type='text/css'>
+      <link rel="stylesheet" href="/static/ng-tags-input.min.css" type='text/css'>
+
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.0/underscore.js"></script>-->
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
+    <script src="/static/ng-tags-input.min.js"></script>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script type="text/javascript">
 
-    var underscore = angular.module('underscore', []);
-    underscore.factory('_', ['$window', function($window) {
-      return $window._; // assumes underscore has already been loaded on the page
-    }]);
+    var JeffCaRecipes = angular.module('JeffCaRecipes', ['ui.router']);
 
-   var JeffCaRecipes = angular.module('JeffCaRecipes', ['ngResource', 'underscore']);
-   // var JeffCaRecipes = angular.module('JeffCaRecipes', ['ngResource', 'underscore', 'angulartics-google-analytics']);
-    // JeffCaRecipes.factory("Comps", function($resource) {
-    //     return $resource("/api/comps/:Id", { Id: "@Id"}, {
-    //       "update": {method:"PUT"}, 
-    //       "query": { method:"GET", isArray: false, transformResponse: function(data) { return angular.fromJson(data).objects; } }
-    //     });
-    // });
-
-    JeffCaRecipes.config(function($routeProvider) {
-       $routeProvider
-        .when('/', { controller: 'HomeController', templateUrl: '/static/partials/index.html' })
-        .when('/detail', { controller: 'DetailController', templateUrl: '/static/partials/detail.html' })
-        // .when('/flashcards', { controller: 'FlashcardsController', templateUrl: '/static/partials/flashcards.html' })
-        // .when('/sentences', { controller: 'SentencesController', templateUrl: '/static/partials/sentences.html' })
-        .otherwise({ redirectTo: '/'});
+    JeffCaRecipes.config(function($stateProvider, $urlRouterProvider) {
+       $urlRouterProvider.otherwise("/");
+       $stateProvider
+           .state('home', {templateUrl: '/static/partials/index.html', controller:'HomeController', url:'/'})
+           .state('detail', {templateUrl: '/static/partials/detail.html', controller:'DetailController', url:'/detail/:id'})
     });
 
 
-    JeffCaRecipes.controller('HomeController', function($scope, $rootScope, $http, $location, _) {                          
+    JeffCaRecipes.controller('HomeController', function($scope, $rootScope, $http) {
       var req = {
         "method": "GET",
           url: '/recipes'
       };
-      $http(req).success(function(data) {
-          $scope.recipes=data;
-          console.log($scope.recipes);                                                                                                                            
+      $http(req).then(function(response) {
+          $scope.recipes=response.data;
       });
-
-      $scope.showDetail=function(recipe) {
-        $rootScope.recipe=recipe;
-        console.log(recipe);
-        $location.url('/detail');
-      };
     });
 
-    JeffCaRecipes.controller('DetailController', function($scope, $rootScope, $http, $location, _) {                          
-      var req = {
+    JeffCaRecipes.controller('DetailController', function($scope, $rootScope, $http, $stateParams) {
+        $scope.loading = true;
+        var req = {
         "method": "GET",
-          url: 'https://api.fieldbook.com/v1/567333c2c16c410300d20da4/recipes'
+          url: '/recipes'
       };
-      $http(req).success(function(data) {
-        console.log(data);
-        var photos = _.where(data, {"recipe":$rootScope.recipe});
-        $scope.ingredients = _.pluck(photos,"ingredients")[0].split(";");
-        console.log($scope.ingredients);
-        $scope.instructions = _.pluck(photos,"instructions")[0].split(".");
-        $scope.menuprice = _.pluck(photos,"menuprice")[0];
-        $scope.recipe = _.pluck(photos,"recipe")[0];
-        $scope.photos1 = photos;
-        // console.log($scope.photos1);
+      $http(req).then(function(response) {
+        console.log(response.data);
+        for (var i = 0; i < response.data.length; i++) {
+            if (response.data[i].id == $stateParams.id) {
+                $scope.recipe = response.data[i];
+                $scope.ingredients = response.data[i].ingredients.split(";");
+                $scope.instructions = response.data[i].instructions.split(".");
+                $scope.loading = false;
+            }
+        }
+        // $scope.recipe = .where(response.data, {"id":stateParams.id});
       });
     });
 
@@ -84,13 +64,6 @@
       clear: left;
       font-size: 9pt;
     }
-
-/*    .card-img-top {
-      padding-left: 2%;
-      width: 20em;
-      margin-right: 20%;
-      height: 19em;
-    }*/
 
     .card-img-top img {
       width: 18rem;
@@ -108,7 +81,7 @@
       height: 360px;
     }
 
-    #home .card-body > button {
+    #home .card-body > a {
       margin-bottom: 2%;
       margin-top: 1%;
       width: 14em;
@@ -120,7 +93,7 @@
 <body>
 <div class="container">
 
-<div ng-app="JeffCaRecipes"oo>
+<div ng-app="JeffCaRecipes">
 
 {% block body %}
 
