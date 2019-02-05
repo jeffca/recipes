@@ -8,61 +8,38 @@
       <link rel="stylesheet" href="/static/ng-tags-input.min.css" type='text/css'>
 
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.0/underscore.js"></script>-->
-  	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.18/angular-ui-router.min.js"></script>
-    <script src="/static/ng-tags-input.min.js"></script>
   	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<script type="text/javascript">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119036220-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    var JeffCaRecipes = angular.module('JeffCaRecipes', ['ui.router']);
-
-    JeffCaRecipes.config(function($stateProvider, $urlRouterProvider) {
-       $urlRouterProvider.otherwise("/");
-       $stateProvider
-           .state('home', {templateUrl: '/static/partials/index.html', controller:'HomeController', url:'/'})
-           .state('detail', {templateUrl: '/static/partials/detail.html', controller:'DetailController', url:'/detail/:id'})
-    });
-
-
-    JeffCaRecipes.controller('HomeController', function($scope, $rootScope, $http) {
-      var req = {
-        "method": "GET",
-          url: '/recipes'
-      };
-      $http(req).then(function(response) {
-          $scope.recipes=response.data;
-      });
-    });
-
-    JeffCaRecipes.controller('DetailController', function($scope, $rootScope, $http, $stateParams) {
-        $scope.loading = true;
-        var req = {
-        "method": "GET",
-          url: '/recipes'
-      };
-      $http(req).then(function(response) {
-        console.log(response.data);
-        for (var i = 0; i < response.data.length; i++) {
-            if (response.data[i].id == $stateParams.id) {
-                $scope.recipe = response.data[i];
-                $scope.ingredients = response.data[i].ingredients.split(";");
-                $scope.instructions = response.data[i].instructions.split(".");
-                $scope.loading = false;
-            }
-        }
-        // $scope.recipe = .where(response.data, {"id":stateParams.id});
-      });
-    });
-
-</script>
+    gtag('config', 'UA-119036220-1');
+  </script>
 
   <style>
+
+    .multi-column {
+       padding-left: 0;
+       column-count: 2;
+       column-gap: 20px;
+       column-fill: auto;
+       list-style-position: inside;
+    }
+
     #footer {
       text-align: center;
       font-family: Helvetica, Arial;
       clear: left;
       font-size: 9pt;
+      margin-top: 1%;
+    }
+
+    .btn {
+      white-space: normal;
     }
 
     .card-img-top img {
@@ -70,7 +47,7 @@
       height: 28rem;
     }
 
-    #home > .card {
+    .card {
       width: 22em;
       float: left;
       margin-left: 1%;
@@ -86,6 +63,12 @@
       margin-top: 1%;
       width: 14em;
     }
+
+    .lead > a {
+      float: left;
+      clear: both;
+    }
+
   </style>
 
 </head>
@@ -93,18 +76,10 @@
 <body>
 <div class="container">
 
-<div ng-app="JeffCaRecipes">
 
 {% block body %}
 
-
 {% endblock %}
-
-<div class="text-center">
-  <!-- <button class="btn btn-success">Buy Premium</button> -->
-</div>
-
-<p>&nbsp;</p>
 
 <div id="footer">
   <p>©2018 JeffCa. All rights reserved. <a href="mailto:jeff12ca@gmail.com" alt="email">Contact Us</a></p>

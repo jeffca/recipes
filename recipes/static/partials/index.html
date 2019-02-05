@@ -4,24 +4,16 @@
 
 <div id="app">
 
-<div class="jumbotron">
-  <h1 class="display-4">Welcome!</h1>
-  <p class="lead">You are now viewing Jeff Cairns' recipes.</p>
-  <hr class="my-4">
-<!--   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#/detail" role="button">Learn more</a>
-  </p>
- -->
-</div>
 
 
 
- <!--<div>-->
- 	<!--<label for="b"><input id="b" type="radio" ng-model="recipe.category" value="breakfast">Breakfast</label>-->
- 	<!--<label for="l"><input id="l" type="radio" ng-model="recipe.category" value="lunch">Lunch</label>-->
- 	<!--<label for="d"><input id="d" type="radio" ng-model="recipe.category" value="dinner">Dinner</label>-->
- 	<!--<label for="s"><input id="s" type="radio" ng-model="recipe.category" value="snack">Snack</label>-->
-  <!--</div>-->
+
+ <div>
+ 	<label for="b"><input id="b" type="radio" ng-model="recipe.category" value="breakfast">Breakfast</label>
+ 	<label for="l"><input id="l" type="radio" ng-model="recipe.category" value="lunch">Lunch</label>
+ 	<label for="d"><input id="d" type="radio" ng-model="recipe.category" value="dinner">Dinner</label>
+ 	<label for="s"><input id="s" type="radio" ng-model="recipe.category" value="snack">Snack</label>
+  </div>
 <div id="home">
 <div class="card" ng-repeat="r in recipes | filter:recipe.category">
  <img class="card-img-top" src="{{r.menuimgurl}}" alt="Card image cap">

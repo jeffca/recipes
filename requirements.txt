@@ -8,11 +8,8 @@ idna==2.6
 itsdangerous==0.24
 gunicorn==19.0.0
 Jinja2==2.10
-lxml==4.2.1
 MarkupSafe==1.0
 peewee==3.3.4
-psycopg2==2.7.4
-psycopg2-binary==2.7.4
 py2app==0.7.3
 python-dateutil==1.5
 requests==2.18.4
